@@ -39,7 +39,7 @@ def get_spaceship_animation_coroutine(canvas):
 
 def get_star_coordinates(canvas):
     border_width = 2
-    amount_of_stars = 50
+    amount_of_stars = 100
     canvas_height, canvas_width = canvas.getmaxyx()
     star_coordinates = []
     while len(star_coordinates) <= amount_of_stars:
@@ -76,7 +76,7 @@ def get_star_coroutines(canvas):
 def get_fire_animation_coroutine(canvas):
     canvas_height, canvas_width = canvas.getmaxyx()
     start_moving_y = canvas_height / 2
-    start_moving_x = canvas_width / 2 
+    start_moving_x = canvas_width / 2
     do_firing = fire(canvas, start_moving_y, start_moving_x)
     return do_firing
 

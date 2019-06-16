@@ -14,28 +14,28 @@ async def blink(canvas, row, column, symbol='*'):
 
     while True:
         canvas.addstr(row, column, symbol, curses.A_DIM)
-        for _ in range(10000):
-            await asyncio.sleep(0)
-
-        canvas.addstr(row, column, symbol)
-        for _ in range(5000):
-            await asyncio.sleep(0)
-
-        canvas.addstr(row, column, symbol, curses.A_BOLD)
         for _ in range(3000):
             await asyncio.sleep(0)
 
         canvas.addstr(row, column, symbol)
-        for _ in range(5000):
+        for _ in range(1500):
+            await asyncio.sleep(0)
+
+        canvas.addstr(row, column, symbol, curses.A_BOLD)
+        for _ in range(1000):
+            await asyncio.sleep(0)
+
+        canvas.addstr(row, column, symbol)
+        for _ in range(1500):
             await asyncio.sleep(0)
 
 
 async def animate_spaceship(canvas, row, column, animations):
     while True:
         for animation in animations:
-            for i in range(1500):
+            for i in range(500):
                 row_shift, column_shift, space = read_controls(canvas)
-                if i == 1499:
+                if i == 499:
                     draw_frame(canvas, row, column, animation, True)
                     break
                 if check_possibility_of_movement(
