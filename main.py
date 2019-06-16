@@ -86,8 +86,7 @@ def draw(canvas):
 
     all_coroutines = get_star_coroutines(canvas)
     all_coroutines.append(get_fire_animation_coroutine(canvas))
-    animate_spaceship_coroutine = get_spaceship_animation_coroutine(canvas)
-    all_coroutines.append(animate_spaceship_coroutine)
+    all_coroutines.append(get_spaceship_animation_coroutine(canvas))
 
     while True:
         for coroutine in all_coroutines:
