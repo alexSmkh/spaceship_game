@@ -1,7 +1,6 @@
 import os
 from random import randint, choice
 from async_animations import blink, fire, animate_spaceship
-from curses_tools import get_frame_size
 
 
 def load_file(path):
@@ -28,13 +27,12 @@ def get_spaceship_animation_coroutine(canvas):
     canvas_height, canvas_width = canvas.getmaxyx()
     start_row = canvas_height / 2
     start_column = canvas_width / 2 - 2
-    do_flying = animate_spaceship(
+    return animate_spaceship(
         canvas,
         start_row,
         start_column,
         spaceship_animations
     )
-    return do_flying
 
 
 def get_star_coordinates(canvas):
@@ -77,7 +75,7 @@ def get_fire_animation_coroutine(canvas):
     canvas_height, canvas_width = canvas.getmaxyx()
     start_moving_y = canvas_height / 2
     start_moving_x = canvas_width / 2
-    do_firing = fire(canvas, start_moving_y, start_moving_x)
-    return do_firing
+    return fire(canvas, start_moving_y, start_moving_x)
+
 
 
