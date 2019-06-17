@@ -4,8 +4,6 @@ from async_animations import blink, fire, animate_spaceship
 
 
 def load_file(path):
-    if not os.path.exists(path):
-        return None
     with open(path, 'r') as file_handler:
         animation_file = file_handler.read()
     return animation_file
