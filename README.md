@@ -1,6 +1,6 @@
 # Spaceship Game
 
-Консольная игра про космос, созданная c помощью библиотк curses и asyncio. 
+Консольная игра про космос, созданная c помощью библиотек curses и asyncio. 
 
 ![](./gif_sample/game_sample.gif)
 
