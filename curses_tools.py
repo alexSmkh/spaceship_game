@@ -84,8 +84,14 @@ def get_possible_coordinates(canvas, row, column, animation):
     max_row = canvas_rows - border - frame_rows
     max_column = canvas_columns - border - frame_columns
 
-    if row < border or row > max_row:
-        return False
+    if row < border:
+        row = border
+    elif row > max_row:
+        row = max_row
 
-    if column <= border or column > max_column:
-        return False
+    if column < border:
+        column = border
+    elif column > max_column:
+        column = max_column
+
+    return column,row
