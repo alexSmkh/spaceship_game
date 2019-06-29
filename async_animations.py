@@ -54,8 +54,7 @@ async def animate_spaceship(canvas, row, column, animations):
                 draw_frame(canvas, row, column, animation)
                 await asyncio.sleep(0)
 
-
-async def fire(canvas, start_row, start_column, rows_speed=-0.3, columns_speed=0):
+async def fire(canvas, start_row, start_column, rows_speed=-0.5, columns_speed=0):
     """Display animation of gun shot. Direction and speed can be specified."""
 
     row, column = start_row, start_column
