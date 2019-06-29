@@ -45,7 +45,7 @@ async def animate_spaceship(canvas, row, column, animations):
             column = possibility_column
 
 
-async def fire(canvas, start_row, start_column, rows_speed=-0.5, columns_speed=0):
+async def fire(canvas, start_row, start_column, rows_speed=-2, columns_speed=0):
     """Display animation of gun shot. Direction and speed can be specified."""
 
     row, column = start_row, start_column
