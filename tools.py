@@ -11,8 +11,8 @@ def load_file(path):
 
 def get_spaceship_animations():
     path_to_animations = [
-        os.paht.join(os.getcwd(), 'animations/rocket_frame_1.txt'),
-        os.paht.join(os.getcwd(), 'animations/rocket_frame_2.txt'),
+        os.path.join(os.getcwd(), 'animations/rocket_frame_1.txt'),
+        os.path.join(os.getcwd(), 'animations/rocket_frame_2.txt'),
     ]
     animations = [
         load_file(path_to_animation) for path_to_animation in path_to_animations
