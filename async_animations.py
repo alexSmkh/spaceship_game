@@ -31,28 +31,19 @@ async def blink(canvas, row, column, delay, symbol='*'):
 async def animate_spaceship(canvas, row, column, animations):
     while True:
         for animation in animations:
-            for i in range(500):
-                row_shift, column_shift, space = read_controls(canvas)
-                if i == 499:
-                    draw_frame(canvas, row, column, animation, True)
-                    break
-                if check_possibility_of_movement(
-                        canvas,
-                        row + row_shift,
-                        column + column_shift,
-                        animation
-                        ) is False:
-                    continue
+            draw_frame(canvas, row, column, animation)
+            await asyncio.sleep(0)
+            row_shift, column_shift, space = read_controls(canvas)
+            possibility_column, possibility_row = get_possible_coordinates(
+                canvas,
+                row+row_shift,
+                column+column_shift,
+                animation
+            )
+            draw_frame(canvas, row, column, animation, True)
+            row = possibility_row
+            column = possibility_column
 
-                if row_shift != 0 or column_shift != 0:
-                    draw_frame(canvas, row, column, animation, True)
-                    row += row_shift
-                    column += column_shift
-
-                    draw_frame(canvas, row, column, animation)
-                    continue
-                draw_frame(canvas, row, column, animation)
-                await asyncio.sleep(0)
 
 async def fire(canvas, start_row, start_column, rows_speed=-0.5, columns_speed=0):
     """Display animation of gun shot. Direction and speed can be specified."""
