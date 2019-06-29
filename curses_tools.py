@@ -79,7 +79,7 @@ def get_frame_size(text):
     return rows, columns
 
 
-def check_possibility_of_movement(canvas, row, column, animation):
+def get_possible_coordinates(canvas, row, column, animation):
     canvas_rows, canvas_columns = canvas.getmaxyx()
     border = 1
     frame_rows, frame_columns = get_frame_size(animation)

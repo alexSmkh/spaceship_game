@@ -2,7 +2,7 @@ import asyncio
 import curses
 
 from curses_tools import draw_frame, read_controls
-from curses_tools import check_possibility_of_movement
+from curses_tools import get_possible_coordinates
 
 
 async def blink(canvas, row, column, delay, symbol='*'):
