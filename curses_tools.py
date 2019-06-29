@@ -33,8 +33,6 @@ def read_controls(canvas):
         if pressed_key_code == SPACE_KEY_CODE:
             space_pressed = True
 
-        canvas.nodelay(True)
-    
     return rows_direction, columns_direction, space_pressed
 
 
