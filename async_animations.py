@@ -12,19 +12,19 @@ async def blink(canvas, row, column, delay, symbol='*'):
 
     while True:
         canvas.addstr(row, column, symbol, curses.A_DIM)
-        for _ in range(3000):
+        for _ in range(20):
             await asyncio.sleep(0)
 
         canvas.addstr(row, column, symbol)
-        for _ in range(1500):
+        for _ in range(10):
             await asyncio.sleep(0)
 
         canvas.addstr(row, column, symbol, curses.A_BOLD)
-        for _ in range(1000):
+        for _ in range(7):
             await asyncio.sleep(0)
 
         canvas.addstr(row, column, symbol)
-        for _ in range(1500):
+        for _ in range(10):
             await asyncio.sleep(0)
 
 
@@ -61,12 +61,11 @@ async def fire(canvas, start_row, start_column, rows_speed=-0.3, columns_speed=0
     row, column = start_row, start_column
 
     canvas.addstr(round(row), round(column), '*')
-    for _ in range(500):
-        await asyncio.sleep(0)
+    await asyncio.sleep(0)
 
     canvas.addstr(round(row), round(column), 'O')
-    for _ in range(500):
-        await asyncio.sleep(0)
+    await asyncio.sleep(0)
+
     canvas.addstr(round(row), round(column), ' ')
 
     row += rows_speed
@@ -81,9 +80,8 @@ async def fire(canvas, start_row, start_column, rows_speed=-0.3, columns_speed=0
 
     while 1 < row < max_row and 0 < column < max_column:
         canvas.addstr(round(row), round(column), symbol)
-        for _ in range(500):
-            await asyncio.sleep(0)
+        await asyncio.sleep(0)
+
         canvas.addstr(round(row), round(column), ' ')
         row += rows_speed
         column += columns_speed
-
