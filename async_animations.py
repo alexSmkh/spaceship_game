@@ -1,13 +1,11 @@
 import asyncio
 import curses
-from random import randint
 
 from curses_tools import draw_frame, read_controls
 from curses_tools import check_possibility_of_movement
 
 
-async def blink(canvas, row, column, symbol='*'):
-    delay = randint(1000, 10000)
+async def blink(canvas, row, column, delay, symbol='*'):
     canvas.addstr(row, column, symbol, curses.A_DIM)
     for _ in range(delay):
         await asyncio.sleep(0)

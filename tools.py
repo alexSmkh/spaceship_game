@@ -63,6 +63,7 @@ def get_star_coroutines(canvas):
             canvas,
             y_coordinate,
             x_coordinate,
+            randint(1, 30),
             symbol=choice(star_types)
         )
         star_coroutines.append(star_coroutine)
@@ -74,6 +75,3 @@ def get_fire_animation_coroutine(canvas):
     start_moving_y = canvas_height / 2
     start_moving_x = canvas_width / 2
     return fire(canvas, start_moving_y, start_moving_x)
-
-
-
