@@ -1,4 +1,6 @@
 import curses
+import time
+
 from tools import get_star_coroutines
 from tools import get_fire_animation_coroutine
 from tools import get_spaceship_animation_coroutine
@@ -23,6 +25,7 @@ def draw(canvas):
             except StopIteration:
                 all_coroutines.remove(coroutine)
         canvas.refresh()
+        time.sleep(TIC_TIMEOUT)
 
 
 if __name__ == '__main__':
