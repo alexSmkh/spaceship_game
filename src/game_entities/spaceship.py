@@ -31,12 +31,12 @@ class Spaceship:
 
             row_direction, column_direction, space = read_controls(canvas)
 
-            if space and (const.YEAR >= 2020):
+            if space and (const.year >= 2020):
                 # -1: shift the animation to see explosion during a shot
                 # 2: shift the animation to a shot was out of the gun
                 new_bullet = Bullet(self.row - 1, self.column + 2)
                 self.shots.append(new_bullet)
-                const.COROUTINES.append(new_bullet.fly(canvas))
+                const.coroutines.append(new_bullet.fly(canvas))
                 curses.beep()
 
             self.row_speed, self.column_speed = update_speed(
@@ -46,7 +46,7 @@ class Spaceship:
                 column_direction
             )
 
-            for obstacle in const.OBSTACLES:
+            for obstacle in const.obstacles:
                 is_collision = has_collision(
                     (obstacle.row, obstacle.column),
                     (obstacle.rows_size, obstacle.columns_size),
@@ -66,7 +66,7 @@ class Spaceship:
                         self.column + rows_size / 2
                     )
                     await explosion.explode(canvas)
-                    const.COROUTINES.append(show_game_over(canvas))
+                    const.coroutines.append(show_game_over(canvas))
                     return
 
             draw_frame(canvas, self.row, self.column, previous_spaceship_state, True)

@@ -26,14 +26,14 @@ class Garbage:
 
         rows_size, columns_size = get_frame_size(self.frame)
         obstacle = Obstacle(self.row, self.column, rows_size, columns_size)
-        const.OBSTACLES.append(obstacle)
+        const.obstacles.append(obstacle)
         while self.row < rows_number:
             draw_frame(canvas, self.row, self.column, self.frame)
-            if obstacle in const.OBSTACLES_IN_LAST_COLLISIONS:
+            if obstacle in const.obstacles_in_last_collisions:
                 draw_frame(
                     canvas, self.row, self.column, self.frame, negative=True
                 )
-                const.OBSTACLES.remove(obstacle)
+                const.obstacles.remove(obstacle)
 
                 explosion = Explosion(
                     self.row + rows_size / 2,
@@ -45,21 +45,21 @@ class Garbage:
             draw_frame(canvas, self.row, self.column, self.frame, negative=True)
             self.row += speed
             obstacle.row += speed
-        const.OBSTACLES.remove(obstacle)
+        const.obstacles.remove(obstacle)
 
 
 async def fill_orbit_with_garbage(canvas, garbage_frames):
     rows_number, columns_number = canvas.getmaxyx()
     while True:
-        if const.YEAR < 1961:
+        if const.year < 1961:
             await asyncio.sleep(0)
             continue
-        await sleep(get_garbage_delay_tics(const.YEAR))
+        await sleep(get_garbage_delay_tics(const.year))
         garbage_frame = random.choice(garbage_frames)
         rows_animation_frame, columns_animation_frame = get_frame_size(
             garbage_frame)
         column = random.randint(0, columns_number - columns_animation_frame)
 
         garbage = Garbage(0, column, garbage_frame)
-        const.COROUTINES.append(garbage.fly_garbage(canvas))
+        const.coroutines.append(garbage.fly_garbage(canvas))
         await asyncio.sleep(0)

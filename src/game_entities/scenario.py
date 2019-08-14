@@ -9,7 +9,7 @@ from game_entities import global_variables as const
 async def time_tracker():
     while True:
         await sleep(15)
-        const.YEAR += 1
+        const.year += 1
 
 
 async def show_game_year(canvas):
@@ -21,9 +21,9 @@ async def show_game_year(canvas):
             canvas,
             row,
             column,
-            f'Current year - {const.YEAR}'
+            f'Current year - {const.year}'
         )
-        last_year = const.YEAR
+        last_year = const.year
         await asyncio.sleep(0)
         draw_frame(canvas, row, column, f'Current year - {last_year}', True)
 
@@ -36,7 +36,7 @@ async def show_game_events(canvas):
     padding_right = 6
 
     while True:
-        if const.YEAR in const.PHRASES:
+        if const.year in const.PHRASES:
             if description_of_last_event:
                 draw_frame(
                     canvas,
@@ -46,7 +46,7 @@ async def show_game_events(canvas):
                     True
                 )
 
-            year_of_last_event = const.YEAR
+            year_of_last_event = const.year
             description_of_last_event = \
                 f'Last space event: {const.PHRASES[year_of_last_event]}'
             _, columns_size = get_frame_size(description_of_last_event)

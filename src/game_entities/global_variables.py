@@ -1,7 +1,7 @@
-COROUTINES = list()
-OBSTACLES = list()
-OBSTACLES_IN_LAST_COLLISIONS = list()
-YEAR = 1957
+coroutines = list()
+obstacles = list()
+obstacles_in_last_collisions = list()
+year = 1957
 TIC_TIMEOUT = 0.1
 PHRASES = {
     1957: "First Sputnik",

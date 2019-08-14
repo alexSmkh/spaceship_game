@@ -3,7 +3,7 @@ import time
 
 from tools.coroutine_tools import init_coroutines
 from tools.curses_tools import get_canvases
-from game_entities.global_variables import COROUTINES, TIC_TIMEOUT
+from game_entities.global_variables import coroutines, TIC_TIMEOUT
 
 
 def draw(canvas):
@@ -16,13 +16,13 @@ def draw(canvas):
     init_coroutines(game_canvas, scenario_canvas)
 
     while True:
-        for coroutine in COROUTINES:
+        for coroutine in coroutines:
             try:
                 coroutine.send(None)
                 game_canvas.border()
                 scenario_canvas.border()
             except StopIteration:
-                COROUTINES.remove(coroutine)
+                coroutines.remove(coroutine)
         game_canvas.refresh()
         scenario_canvas.refresh()
 

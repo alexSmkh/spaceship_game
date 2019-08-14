@@ -32,14 +32,14 @@ class Bullet:
 
         while 1 < self.row < max_row and 0 < self.column < max_column:
             canvas.addstr(round(self.row), round(self.column), symbol)
-            for obstacle in const.OBSTACLES:
+            for obstacle in const.obstacles:
                 is_collision = has_collision(
                     (obstacle.row, obstacle.column),
                     (obstacle.rows_size, obstacle.columns_size),
                     (self.row, self.column)
                 )
                 if is_collision:
-                    const.OBSTACLES_IN_LAST_COLLISIONS.append(obstacle)
+                    const.obstacles_in_last_collisions.append(obstacle)
                     canvas.addstr(round(self.row), round(self.column), ' ')
                     return
 
