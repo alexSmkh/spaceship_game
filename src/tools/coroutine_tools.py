@@ -2,7 +2,7 @@ import random
 
 from game_entities.garbage import fill_orbit_with_garbage
 from game_entities.global_variables import coroutines
-from game_entities.scenario import time_tracker, show_game_year, \
+from game_entities.scenario import increment_year, show_game_year, \
     show_game_events
 from game_entities.star import Star
 from game_entities.spaceship import Spaceship
@@ -56,6 +56,6 @@ def init_coroutines(game_canvas, scenario_canvas):
     coroutines.extend(get_star_coroutines(game_canvas))
     coroutines.extend(get_spaceship_coroutines(game_canvas))
     coroutines.append(get_fill_orbit_with_garbage_coroutine(game_canvas))
-    coroutines.append(time_tracker())
+    coroutines.append(increment_year())
     coroutines.append(show_game_year(scenario_canvas))
     coroutines.append(show_game_events(scenario_canvas))

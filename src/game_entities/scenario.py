@@ -17,7 +17,7 @@ PHRASES = {
 }
 
 
-async def time_tracker():
+async def increment_year():
     while True:
         await sleep(15)
         const.year += 1
