@@ -5,6 +5,17 @@ from tools.curses_tools import draw_frame, get_frame_size
 from tools.utils import get_animations
 from game_entities import global_variables as const
 
+PHRASES = {
+    1957: "First Sputnik",
+    1961: "Gagarin flew!",
+    1969: "Armstrong got on the moon!",
+    1971: "First orbital space station Salute-1",
+    1981: "Flight of the Shuttle Columbia",
+    1998: 'ISS start building',
+    2011: 'Messenger launch to Mercury',
+    2020: "Take the plasma gun! Shoot the garbage!",
+}
+
 
 async def time_tracker():
     while True:
@@ -36,7 +47,7 @@ async def show_game_events(canvas):
     padding_right = 6
 
     while True:
-        if const.year in const.PHRASES:
+        if const.year in PHRASES:
             if description_of_last_event:
                 draw_frame(
                     canvas,
@@ -48,7 +59,7 @@ async def show_game_events(canvas):
 
             year_of_last_event = const.year
             description_of_last_event = \
-                f'Last space event: {const.PHRASES[year_of_last_event]}'
+                f'Last space event: {PHRASES[year_of_last_event]}'
             _, columns_size = get_frame_size(description_of_last_event)
             column = max_column - columns_size - padding_right
             draw_frame(

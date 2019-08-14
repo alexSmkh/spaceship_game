@@ -3,7 +3,9 @@ import time
 
 from tools.coroutine_tools import init_coroutines
 from tools.curses_tools import get_canvases
-from game_entities.global_variables import coroutines, TIC_TIMEOUT
+from game_entities.global_variables import coroutines
+
+TIC_TIMEOUT = 0.1
 
 
 def draw(canvas):
