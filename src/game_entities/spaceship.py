@@ -19,7 +19,6 @@ class Spaceship:
         self.column = start_column
         self.row_speed = 0
         self.column_speed = 0
-        self.shots = list()
         self.state = None
         self.possible_states = get_animations('spaceship')
 
@@ -35,7 +34,6 @@ class Spaceship:
                 # -1: shift the animation to see explosion during a shot
                 # 2: shift the animation to a shot was out of the gun
                 new_bullet = Bullet(self.row - 1, self.column + 2)
-                self.shots.append(new_bullet)
                 global_variables.coroutines.append(new_bullet.fly(canvas))
                 curses.beep()
 
