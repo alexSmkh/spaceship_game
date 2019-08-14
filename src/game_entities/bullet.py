@@ -2,7 +2,7 @@ import asyncio
 import curses
 
 from game_entities.obstacle import has_collision
-from game_entities import global_variables as const
+from game_entities import global_variables
 
 
 class Bullet:
@@ -32,14 +32,14 @@ class Bullet:
 
         while 1 < self.row < max_row and 0 < self.column < max_column:
             canvas.addstr(round(self.row), round(self.column), symbol)
-            for obstacle in const.obstacles:
+            for obstacle in global_variables.obstacles:
                 is_collision = has_collision(
                     (obstacle.row, obstacle.column),
                     (obstacle.rows_size, obstacle.columns_size),
                     (self.row, self.column)
                 )
                 if is_collision:
-                    const.obstacles_in_last_collisions.append(obstacle)
+                    global_variables.obstacles_in_last_collisions.append(obstacle)
                     canvas.addstr(round(self.row), round(self.column), ' ')
                     return
 

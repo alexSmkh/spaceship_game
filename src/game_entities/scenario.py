@@ -3,7 +3,7 @@ import asyncio
 from tools.async_sleep import sleep
 from tools.curses_tools import draw_frame, get_frame_size
 from tools.utils import get_animations
-from game_entities import global_variables as const
+from game_entities import global_variables
 
 PHRASES = {
     1957: "First Sputnik",
@@ -20,7 +20,7 @@ PHRASES = {
 async def increment_year():
     while True:
         await sleep(15)
-        const.year += 1
+        global_variables.year += 1
 
 
 async def show_game_year(canvas):
@@ -32,9 +32,9 @@ async def show_game_year(canvas):
             canvas,
             row,
             column,
-            f'Current year - {const.year}'
+            f'Current year - {global_variables.year}'
         )
-        last_year = const.year
+        last_year = global_variables.year
         await asyncio.sleep(0)
         draw_frame(canvas, row, column, f'Current year - {last_year}', True)
 
@@ -47,7 +47,7 @@ async def show_game_events(canvas):
     padding_right = 6
 
     while True:
-        if const.year in PHRASES:
+        if global_variables.year in PHRASES:
             if description_of_last_event:
                 draw_frame(
                     canvas,
@@ -57,7 +57,7 @@ async def show_game_events(canvas):
                     True
                 )
 
-            year_of_last_event = const.year
+            year_of_last_event = global_variables.year
             description_of_last_event = \
                 f'Last space event: {PHRASES[year_of_last_event]}'
             _, columns_size = get_frame_size(description_of_last_event)
